@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Estudiantes</title>
+
+<style>
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive > .table-bordered {
+  border: 0;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Estudiantes</h1>
+<div class="card-body">
+	<div class="table-responsive">
+	    <table class="table table-bordered" id="tablaEstudiantes" width="100%" cellspacing="0">
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Carnet</th>
+					<th>Carrera</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e: ${estudiantes}">
+					<td th:text="${e.codigoEstudiante}"></td>
+					<td th:text="${e.nombre}"></td>
+					<td th:text="${e.apellido}"></td>
+					<td th:text="${e.carnet}"></td>
+					<td th:text="${e.carrera}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<a href="/inicio">Regresar</a>
+          
+</body>
+</html>

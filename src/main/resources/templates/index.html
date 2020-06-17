@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Ingresar Estudiante</title>
+<style>
+* {
+	font-family: Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+}
+
+label {
+	color: #848484;
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+
+span {
+	color: #E81505;
+}
+
+input, a {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: vertical;
+	margin-bottom: 1em;
+}
+
+.button {
+	width: auto;
+	margin-top: 1em;
+	background-color: #2E64FE;
+	border: none;
+	float: right;
+	color: white;
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	float: left !important;
+}
+
+.button:hover {
+	background-color: #819FF7;
+}
+
+.container {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+.col-25 {
+	float: left;
+	width: 25%;
+	margin-top: 6px;
+}
+
+.col-75 {
+	float: left;
+	width: 75%;
+	margin-top: 6px;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<h1>Ingresar estudiante</h1>
+		<form th:action="@{/insertar}" th:object="${estudiante}" method="post">
+
+			<div class="row">
+				<div class="col-25">
+					<label>Nombre</label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:field="*{nombre}"><br> <span
+						th:errors="*{nombre}"></span><br>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-25">
+					<label>Apellido</label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:field="*{apellido}"><br> <span
+						th:errors="*{apellido}"></span><br>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-25">
+					<label>Carnet</label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:field="*{carnet}"><br> <span
+						th:errors="*{carnet}"></span><br>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-25">
+					<label>Carrera</label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:field="*{carrera}"><br> <span
+						th:errors="*{carrera}"></span><br>
+				</div>
+			</div>
+
+			<div class="row">
+				<input class="button" type="submit" value="Agregar Estudiante">
+			</div>
+
+			<div class="row">
+				<a class="button" href="/listado">Estudiantes</a>
+			</div>
+		</form>
+
+		<h1>Eliminar estudiante</h1>
+		<form th:action="@{/delete}" method="post">
+			<div class="row">
+				<div class="col-25">
+					<label>Ingresa el codigo del estudiante</label>
+				</div>
+				<div class="col-75">
+					<input type="text" name="code"><br>
+				</div>
+			</div>
+
+			<div class="row">
+				<input class="button" type="submit" value="Eliminar Estudiante">
+			</div>
+		</form>
+
+		<h1>Filtrar estudiantes</h1>
+		<form th:action="@{/filtrar}" method="post">
+			<div class="row">
+				<div class="col-25">
+					<label>Filtrar por nombre</label>
+				</div>
+				<div class="col-75">
+					<input type="text" name="nombre"><br>
+				</div>
+			</div>
+
+			<div class="row">
+				<input class="button" type="submit" value="Filtrar">
+			</div>
+		</form>
+
+		<form th:action="@{/filtrarApellido}" method="post">
+			<div class="row">
+				<div class="col-25">
+					<label>Filtrar por inicial del apellido</label>
+				</div>
+				<div class="col-75">
+					<input type="text" name="apellido"><br>
+				</div>
+			</div>
+
+			<div class="row">
+				<input class="button" type="submit" value="Filtrar">
+			</div>
+		</form>
+
+		<h1>Editar estudiante</h1>
+		<form th:action="@{/editar}" method="post">
+			<div class="row">
+				<div class="col-25">
+					<label>Ingresa el codigo del estudiante</label>
+				</div>
+				<div class="col-75">
+					<input type="number" name="code"><br>
+				</div>
+			</div>
+
+			<div class="row">
+				<input class="button" type="submit" value="Editar">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>
